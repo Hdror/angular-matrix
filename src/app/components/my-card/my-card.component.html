@@ -1,9 +1,14 @@
 <mat-card class="card-container">
-    <mat-card-header>
+    <mat-card-header class="card-header">
         <mat-card-title>{{cardTitle}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="https://loremflickr.com/320/240/landscape/?random=255" alt="landscape">
+    <mat-divider></mat-divider>
+    <div class="image-container">
+        <img ngSrc="https://loremflickr.com/320/240/landscape/?random=255" fill priority alt="landscape">
+    </div>
     <mat-card-content>
-        {{cardDesc}}
+        <p class="card-desc">
+            {{cardDesc}}
+        </p>
     </mat-card-content>
 </mat-card>
