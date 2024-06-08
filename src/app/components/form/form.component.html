@@ -1,13 +1,11 @@
-<form #form="NgForm" (ngSubmit)="onSubmitForm(form)" class="add-travel-form">
-    <label for="country">Country</label>
-
-    <!-- <input required  [(ngModel)]="selectedCountry" type="text" name="country" id="country">
-    <p class="errors" *ngIf="country.invalid && country.touched">
-        <span *ngIf="country.errors?.['required']">Please choose country</span>
-    </p>
-   -->
-
- 
- 
-    <button [disabled]="form.invalid" class="submit-btn" type="submit">Submit</button>
+<form #form="ngForm">
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Enter your name</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="name" (blur)="updateErrorMessage()" required>
+              <!-- @if (name.invalid) { -->
+            <mat-error *ngIf="name.invalid">{{errorMessage}}</mat-error>
+            <!-- } -->
+        </mat-form-field>
+    </div>
 </form>

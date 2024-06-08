@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { merge } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-form',
@@ -9,10 +11,28 @@ import { NgForm } from '@angular/forms';
 
 export class FormComponent {
 
-  email!:string
+  name = new FormControl('', [Validators.required])
+  errorMessage = '';
 
-  onSubmitForm(form: NgForm) {
-    console.log(form);
+  constructor() {
+    merge(this.name.statusChanges, this.name.valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.updateErrorMessage());
+  }
+
+
+  updateErrorMessage() {
+    if (this.name.hasError('required')) {
+      this.errorMessage = 'You must enter a name';
+    } else {
+      this.errorMessage = '';
+    }
+  }
+
+
+
+  onSubmitForm() {
+    console.log(this.name);
 
   }
 
