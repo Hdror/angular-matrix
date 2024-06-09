@@ -33,7 +33,6 @@ export class FormComponent {
 
   onSubmitForm() {
     console.log(this.name);
-
   }
 
 }

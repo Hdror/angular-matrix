@@ -1,0 +1,21 @@
+.mat-toolbar {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    .header-title{
+        color: white;
+    }
+    .link-container {
+        display: flex;
+        gap: 15px;
+        a {
+            padding: 0px 10px;
+            font-size: 0.875rem;
+            border-radius: 8px;
+            &:focus-visible {
+                box-shadow:-1px -2px 16px 0 white;
+                outline-color: white;
+            }
+        }
+    }
+}

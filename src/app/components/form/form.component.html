@@ -1,11 +1,15 @@
-<form #form="ngForm">
-    <div class="example-container">
+<mat-card>
+<mat-card-content>
+
+    <form #form="ngForm" (ngSubmit)="onSubmitForm()">
         <mat-form-field>
             <mat-label>Enter your name</mat-label>
-            <input matInput placeholder="pat@example.com" [formControl]="name" (blur)="updateErrorMessage()" required>
-              <!-- @if (name.invalid) { -->
-            <mat-error *ngIf="name.invalid">{{errorMessage}}</mat-error>
-            <!-- } -->
-        </mat-form-field>
-    </div>
+        <input matInput placeholder="First name" [formControl]="name" (blur)="updateErrorMessage()" required>
+    @if (name.invalid) {
+        <mat-error *ngIf="name.invalid">{{errorMessage}}</mat-error>
+    }
+</mat-form-field>
+<button [disabled]="name.invalid" mat-flat-button color="primary" type="submit">Submit</button>
 </form>
+</mat-card-content>
+</mat-card>
